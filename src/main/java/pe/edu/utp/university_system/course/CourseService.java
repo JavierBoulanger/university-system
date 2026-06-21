@@ -2,6 +2,7 @@ package pe.edu.utp.university_system.course;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pe.edu.utp.university_system.grading.Evaluation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CourseService {
 
-    private final CourseRepository courseRepository;
     private static final int TOTAL_MODULES = 18;
+
+    private final CourseRepository courseRepository;
 
     public CourseResponse createCourse(CourseRegistrationRequest request) {
 
@@ -27,33 +29,30 @@ public class CourseService {
             module.setModuleNumber(i);
             module.setCourse(course);
             module.setTopics(new ArrayList<>());
+            module.setEvaluations(new ArrayList<>());
 
             final int currentModuleNumber = i;
 
             if (request.getModules() != null) {
+
                 request.getModules().stream()
-                        .filter(m ->
-                                m.getModuleNumber() != null &&
-                                m.getModuleNumber().equals(currentModuleNumber))
+                        .filter(moduleRequest ->
+                                moduleRequest.getModuleNumber() != null
+                                        && moduleRequest.getModuleNumber()
+                                        .equals(currentModuleNumber))
                         .findFirst()
                         .ifPresent(moduleRequest -> {
 
-                            if (moduleRequest.getTopics() != null) {
+                            addTopics(module, moduleRequest);
 
-                                for (String topicName : moduleRequest.getTopics()) {
-
-                                    Topic topic = new Topic();
-                                    topic.setName(topicName);
-                                    topic.setModule(module);
-
-                                    module.getTopics().add(topic);
-                                }
-                            }
+                            addEvaluations(module, moduleRequest);
                         });
             }
 
             course.getModules().add(module);
         }
+
+        validateEvaluationWeights(course);
 
         Course saved = courseRepository.save(course);
 
@@ -68,7 +67,8 @@ public class CourseService {
     public CourseResponse getCourse(Long id) {
 
         Course course = courseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() ->
+                        new RuntimeException("Course not found"));
 
         return new CourseResponse(
                 course.getId(),
@@ -81,7 +81,8 @@ public class CourseService {
     public CourseDetailsResponse getCourseDetails(Long id) {
 
         Course course = courseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() ->
+                        new RuntimeException("Course not found"));
 
         List<ModuleResponse> modules = course.getModules().stream()
                 .map(module -> {
@@ -93,10 +94,20 @@ public class CourseService {
                             ))
                             .toList();
 
+                    List<EvaluationResponse> evaluations =
+                            module.getEvaluations().stream()
+                                    .map(evaluation -> new EvaluationResponse(
+                                            evaluation.getId(),
+                                            evaluation.getTitle(),
+                                            evaluation.getWeight()
+                                    ))
+                                    .toList();
+
                     return new ModuleResponse(
                             module.getId(),
                             module.getModuleNumber(),
-                            topics
+                            topics,
+                            evaluations
                     );
                 })
                 .toList();
@@ -108,5 +119,66 @@ public class CourseService {
                 course.getCredits(),
                 modules
         );
+    }
+
+    private void addTopics(
+            Module module,
+            ModuleRegistrationRequest request) {
+
+        if (request.getTopics() == null) {
+            return;
+        }
+
+        for (String topicName : request.getTopics()) {
+
+            Topic topic = new Topic();
+            topic.setName(topicName);
+            topic.setModule(module);
+
+            module.getTopics().add(topic);
+        }
+    }
+
+    private void addEvaluations(
+            Module module,
+            ModuleRegistrationRequest request) {
+
+        if (request.getEvaluations() == null) {
+            return;
+        }
+
+        for (EvaluationRegistrationRequest evaluationRequest
+                : request.getEvaluations()) {
+
+            Evaluation evaluation = new Evaluation();
+
+            evaluation.setTitle(
+                    evaluationRequest.getTitle());
+
+            evaluation.setWeight(
+                    evaluationRequest.getWeight());
+
+            evaluation.setModule(module);
+
+            module.getEvaluations().add(evaluation);
+        }
+    }
+
+    private void validateEvaluationWeights(Course course) {
+
+        double totalWeight = course.getModules()
+                .stream()
+                .flatMap(module ->
+                        module.getEvaluations().stream())
+                .mapToDouble(Evaluation::getWeight)
+                .sum();
+
+        if (Double.compare(totalWeight, 100.0) != 0) {
+
+            throw new IllegalArgumentException(
+                    "The total evaluation weight must equal 100%. Current total: "
+                            + totalWeight + "%"
+            );
+        }
     }
 }

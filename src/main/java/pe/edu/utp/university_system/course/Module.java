@@ -16,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pe.edu.utp.university_system.grading.Evaluation;
 
 import java.util.List;
 
@@ -40,4 +41,7 @@ public class Module {
 
     @OneToMany(mappedBy = "module", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Topic> topics;
+
+    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Evaluation> evaluations;
 }

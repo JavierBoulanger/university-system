@@ -9,4 +9,7 @@ public class ModuleRegistrationRequest {
     private Integer moduleNumber;
 
     private List<String> topics;
+
+    private List<EvaluationRegistrationRequest> evaluations;
+
 }

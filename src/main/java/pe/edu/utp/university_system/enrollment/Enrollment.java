@@ -7,10 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pe.edu.utp.university_system.grading.Grade;
 import pe.edu.utp.university_system.section.Section;
 import pe.edu.utp.university_system.student.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(
@@ -44,4 +46,7 @@ public class Enrollment {
 
     @Column(nullable = false)
     private LocalDate enrollmentDate;
+
+    @OneToMany(mappedBy = "enrollment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Grade> grades;
 }
