@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pe.edu.utp.university_system.grading.Evaluation;
 
 import java.util.List;
 

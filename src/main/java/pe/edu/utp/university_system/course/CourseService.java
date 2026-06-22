@@ -2,7 +2,6 @@ package pe.edu.utp.university_system.course;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pe.edu.utp.university_system.grading.Evaluation;
 
 import java.util.ArrayList;
 import java.util.List;

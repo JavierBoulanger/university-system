@@ -1,11 +1,10 @@
-package pe.edu.utp.university_system.grading;
+package pe.edu.utp.university_system.course;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pe.edu.utp.university_system.course.Module;
 
 @Entity
 @Table(name = "evaluation")

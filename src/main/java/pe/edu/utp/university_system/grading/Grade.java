@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pe.edu.utp.university_system.course.Evaluation;
 import pe.edu.utp.university_system.enrollment.Enrollment;
 
 @Entity
