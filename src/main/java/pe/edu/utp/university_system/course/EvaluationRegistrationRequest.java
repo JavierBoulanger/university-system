@@ -8,4 +8,6 @@ public class EvaluationRegistrationRequest {
     private String title;
 
     private Double weight;
+
+    private EvaluationType evaluationType;
 }

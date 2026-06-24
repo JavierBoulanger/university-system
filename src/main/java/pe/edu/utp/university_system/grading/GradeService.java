@@ -2,6 +2,7 @@ package pe.edu.utp.university_system.grading;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pe.edu.utp.university_system.ai.AIRecommendationService;
 import pe.edu.utp.university_system.course.Evaluation;
 import pe.edu.utp.university_system.course.EvaluationRepository;
 import pe.edu.utp.university_system.enrollment.Enrollment;
@@ -14,9 +15,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GradeService {
 
+    private static final double PASSING_GRADE = 11.5;
+
     private final GradeRepository gradeRepository;
     private final EvaluationRepository evaluationRepository;
     private final EnrollmentRepository enrollmentRepository;
+    private final AIRecommendationService aiRecommendationService;
 
     public void registerGrades(
             BulkGradeRegistrationRequest request) {
@@ -53,17 +57,21 @@ public class GradeService {
             }
 
             Grade grade = new Grade();
-
-            grade.setValue(
-                    gradeRequest.getValue());
-
-            grade.setEnrollment(
-                    enrollment);
-
-            grade.setEvaluation(
-                    evaluation);
-
+            grade.setValue(gradeRequest.getValue());
+            grade.setEnrollment(enrollment);
+            grade.setEvaluation(evaluation);
             gradesToSave.add(grade);
+
+            //Recomendacion IA
+            if (gradeRequest.getValue() < PASSING_GRADE) {
+
+                aiRecommendationService
+                        .generateRecommendation(
+                                enrollment,
+                                evaluation,
+                                gradeRequest.getValue()
+                        );
+            }
         }
 
         gradeRepository.saveAll(gradesToSave);
@@ -93,12 +101,4 @@ public class GradeService {
                 / 100.0;
     }
 
-
-    /* para la IA futura
-    public List<String> getTopicsNeedingReinforcement(
-            Long enrollmentId,
-            Double passingGrade) {
-        return null;
-    }
-    */
 }

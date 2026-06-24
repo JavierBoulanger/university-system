@@ -24,6 +24,10 @@ public class Evaluation {
     @Column(nullable = false)
     private Double weight;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EvaluationType evaluationType;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "module_id", nullable = false)
     private Module module;

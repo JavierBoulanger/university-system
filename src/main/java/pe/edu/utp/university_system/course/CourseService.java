@@ -150,15 +150,10 @@ public class CourseService {
                 : request.getEvaluations()) {
 
             Evaluation evaluation = new Evaluation();
-
-            evaluation.setTitle(
-                    evaluationRequest.getTitle());
-
-            evaluation.setWeight(
-                    evaluationRequest.getWeight());
-
+            evaluation.setTitle(evaluationRequest.getTitle());
+            evaluation.setWeight(evaluationRequest.getWeight());
+            evaluation.setEvaluationType(evaluationRequest.getEvaluationType());
             evaluation.setModule(module);
-
             module.getEvaluations().add(evaluation);
         }
     }
