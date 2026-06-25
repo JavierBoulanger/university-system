@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pe.edu.utp.university_system.auth.UserAccount;
 
 import java.time.LocalDate;
 
@@ -49,4 +50,10 @@ public class Teacher {
 
     @Column(nullable = false)
     private Boolean active = true;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "user_account_id",
+            nullable = false)
+    private UserAccount userAccount;
 }

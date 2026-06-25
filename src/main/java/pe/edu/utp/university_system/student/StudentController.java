@@ -15,27 +15,28 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public ResponseEntity<List<Student>> getStudents() {
+    public ResponseEntity<List<StudentResponse>> getStudents() {
         return ResponseEntity.ok(studentService.getStudents());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<StudentResponse> getStudent(@PathVariable Long id) {
+        return ResponseEntity.ok(studentService.getStudentById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
-        Student savedStudent = studentService.saveStudent(student);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(savedStudent);
+    public ResponseEntity<StudentResponse>
+    createStudent(@RequestBody StudentRegistrationRequest request) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(studentService.createStudent(request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteStudent(
+            @PathVariable Long id) {studentService.deleteStudent(id);
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 }

@@ -15,29 +15,27 @@ public class TeacherController {
     private final TeacherService teacherService;
 
     @GetMapping
-    public ResponseEntity<List<Teacher>> getTeachers() {
+    public ResponseEntity<List<TeacherResponse>> getTeachers() {
         return ResponseEntity.ok(teacherService.getTeachers());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Teacher> getTeacherById(@PathVariable Long id) {
-        return teacherService.getTeacherById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<TeacherResponse> getTeacher(@PathVariable Long id) {
+        return ResponseEntity.ok(teacherService.getTeacherById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Teacher> createTeacher(@RequestBody Teacher teacher) {
-        Teacher savedTeacher = teacherService.saveTeacher(teacher);
-
+    public ResponseEntity<TeacherResponse> createTeacher(@RequestBody TeacherRegistrationRequest request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(savedTeacher);
+                .body(teacherService.createTeacher(request));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeacher(@PathVariable Long id) {
         teacherService.deleteTeacher(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 }

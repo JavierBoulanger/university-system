@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pe.edu.utp.university_system.auth.UserAccount;
+
 import java.time.LocalDate;
 
 @Entity
@@ -43,4 +45,10 @@ public class Student {
     
     @Column(nullable = false)
     private Boolean active = true;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "user_account_id",
+            nullable = false)
+    private UserAccount userAccount;
 }
