@@ -1,0 +1,28 @@
+body { 
+    font-family: 'Lato', sans-serif; 
+    background-color: #f2f4f8; /* Fondo exacto de la plataforma */
+}
+
+/* Puntos del Swiper */
+.swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    background: #cbd5e1;
+    opacity: 1;
+    transition: all 0.3s;
+}
+.swiper-pagination-bullet-active {
+    width: 16px;
+    border-radius: 4px;
+    background: #0661fc;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+.shadow-utp {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

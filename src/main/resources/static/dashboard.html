@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTP+class :: Cursos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="dashboardStyles.css">
+</head>
+<body class="text-neutral-02 flex overflow-x-hidden min-h-screen">
+    
+    <aside class="w-[88px] bg-[#000F37] flex flex-col items-center py-5 fixed h-full z-20">
+        <div class="mb-6 text-white cursor-pointer hover:opacity-80 transition-opacity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </div>
+        
+        <nav class="flex flex-col w-full relative">
+            <a href="#" class="flex flex-col items-center justify-center h-[80px] bg-[#e6ebf5] text-primary-dark relative">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#f94c61]"></div>
+                <svg width="24" height="24" viewBox="0 0 1024 1024" class="fill-current mb-1"><path d="M853.333 42.667h-576c-81.067 0-149.333 68.267-149.333 149.333v640c0 81.067 68.267 149.333 149.333 149.333h576c25.6 0 42.667-17.067 42.667-42.667v-853.333c0-25.6-17.067-42.667-42.667-42.667zM277.333 128h533.333v554.667h-533.333c-21.333 0-42.667 4.267-64 17.067v-507.733c0-34.133 29.867-64 64-64zM277.333 896c-34.133 0-64-29.867-64-64s29.867-64 64-64h533.333v128h-533.333z"></path></svg>
+                <span class="text-[12px] text-center font-bold">Cursos</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center h-[80px] text-[#a5b0c0] hover:text-white transition-colors">
+                <svg width="24" height="24" viewBox="0 0 1024 1024" class="fill-current mb-1"><path d="M128 938.667c-12.8 0-21.333-4.267-29.867-12.8-12.8-12.8-17.067-29.867-8.533-42.667l76.8-226.133c-25.6-51.2-38.4-110.933-38.4-166.4 0-153.6 85.333-294.4 226.133-362.667 55.467-29.867 119.467-42.667 179.2-42.667 0 0 0 0 0 0h21.333c209.067 12.8 371.2 174.933 384 379.733v25.6c0 64-12.8 123.733-42.667 183.467-68.267 136.533-209.067 221.867-362.667 221.867-55.467 0-115.2-12.8-166.4-34.133l-226.133 76.8c-4.267 0-8.533 0-12.8 0zM533.333 170.667c-51.2 0-98.133 12.8-140.8 34.133-110.933 55.467-179.2 162.133-179.2 285.867 0 51.2 12.8 98.133 34.133 140.8 4.267 8.533 4.267 21.333 4.267 34.133l-55.467 162.133 162.133-55.467c12.8-4.267 21.333-4.267 34.133 4.267 42.667 21.333 93.867 34.133 140.8 34.133 123.733 0 230.4-68.267 285.867-174.933 21.333-42.667 34.133-93.867 34.133-140.8 0 0 0 0 0 0v-25.6c-8.533-162.133-136.533-290.133-302.933-298.667h-17.067c0 0 0 0 0 0z"></path></svg>
+                <span class="text-[12px] text-center">Chat</span>
+            </a>
+            <a href="#" id="menu-docente" class="hidden flex-col items-center justify-center h-[80px] text-[#a5b0c0] hover:text-white transition-colors">
+                <i class="fa-solid fa-upload text-xl mb-1"></i>
+                <span class="text-[12px] text-center">Subir Notas</span>
+            </a>
+            <a href="#" id="menu-admin" class="hidden flex-col items-center justify-center h-[80px] text-[#a5b0c0] hover:text-white transition-colors">
+                <i class="fa-solid fa-plus-circle text-xl mb-1"></i>
+                <span class="text-[12px] text-center">Crear Curso</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="ml-[88px] flex-1 flex flex-col">
+        
+        <header class="bg-white h-[64px] flex items-center justify-between px-6 shadow-sm relative z-10 w-full">
+            <div class="flex items-center">
+                <img src="/static/media/new-logo.c86d23e3.svg" class="w-[151px] h-[25px] ml-[24px] object-contain" alt="UTP" onerror="this.src='https://sso.utp.edu.pe/auth/resources/4i3s1/login/utp-pao/images/logo-pao-class.png'">
+            </div>
+            
+            <div class="flex items-center space-x-5">
+                <button class="relative text-[#4a4f55] hover:text-primary-dark transition-colors">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute -top-1.5 -right-2 bg-[#FABD00] text-[#000f37] text-[9px] font-bold px-1 rounded-full border border-white">3</span>
+                </button>
+                <div class="flex items-center space-x-3 cursor-pointer pl-4 border-l border-gray-200">
+                    <div class="text-right leading-tight hidden md:block">
+                        <p id="user-name-display" class="text-[13px] font-bold text-gray-800">Cargando...</p>
+                        <p id="user-role-display" class="text-[11px] text-gray-500">Cargando...</p>
+                    </div>
+                    <div class="h-10 w-10 flex items-center justify-center">
+                        <img class="rounded-full" width="40" height="40" alt="Avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=1db5b2">
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-600"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 p-6">
+            <div class="max-w-[1800px] w-full mx-auto px-2">
+                
+                <div class="relative mb-3 flex justify-center w-full mt-4">
+                    <div class="w-full max-w-[1064px]">
+                        <div class="swiper bannerSwiper w-full h-[200px] rounded-lg shadow-sm border border-gray-200 cursor-pointer overflow-hidden mb-3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="https://utp-prd-upload-file-storage.s3.amazonaws.com/pao/content/ffc94992-f6c7-484d-8ff7-3a9abdbaebc4/CLASS%20(2)_GCWRLY.jpg" class="w-full h-auto object-cover block"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_509px] gap-8">
+                    <div class="flex flex-col">
+                        <div class="flex justify-between items-end mb-2 pb-1">
+                            <h2 id="titulo-seccion" class="text-[18px] font-bold text-primary-dark">Mis cursos</h2>
+                        </div>
+                        
+                        <h3 class="text-[14px] font-bold text-primary-dark py-4 mb-4 border-b border-gray-300">2026 - Ciclo Actual</h3>
+
+                        <div id="cursos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <p id="loading-message" class="text-gray-500">Cargando cursos desde el servidor...</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <div class="bg-transparent rounded-lg overflow-hidden flex flex-col flex-1">
+                            <div class="bg-[#2A3247] h-[46px] px-5 flex items-center space-x-3 text-white rounded-t-md shrink-0">
+                                <p class="text-[13px] font-bold tracking-wide">Actividades recientes</p>
+                            </div>
+                            <div class="bg-white border-x border-b border-gray-200 rounded-b-md pt-5 pb-[50px] flex-1">
+                                <a class="block mx-5 mb-3 py-[10px] pl-[4px] pr-[3px] bg-[#F2F9FF] border-b border-gray-200 hover:bg-[#e6f4ff] cursor-pointer rounded-sm" href="#">
+                                    <span class="flex items-start justify-between mb-1">
+                                        <p class="text-[14px] text-primary-60 hover:underline">Revisar tutoría de IA Pendiente</p>
+                                    </span>
+                                    <p class="text-[12px] text-[#4A4A4A] mt-1.5 uppercase">SISTEMA UNIVERSITARIO</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            new Swiper('.bannerSwiper', { loop: true });
+
+            const username = localStorage.getItem('username') || 'Invitado';
+            const userRole = localStorage.getItem('userRole') || 'STUDENT';
+            const userAccountId = localStorage.getItem('userAccountId');
+
+            document.getElementById('user-name-display').textContent = 'Hola, ' + username;
+            document.getElementById('user-role-display').textContent = userRole;
+
+            if (userRole === 'TEACHER') {
+                document.getElementById('menu-docente').classList.remove('hidden');
+                document.getElementById('menu-docente').classList.add('flex');
+                document.getElementById('titulo-seccion').textContent = 'Mis Clases Impartidas';
+            } else if (userRole === 'ADMIN') {
+                document.getElementById('menu-admin').classList.remove('hidden');
+                document.getElementById('menu-admin').classList.add('flex');
+                document.getElementById('titulo-seccion').textContent = 'Todas las Secciones Activas';
+            }
+
+
+            cargarCursos(userAccountId, userRole);
+        });
+
+        function cargarCursos(accountId, role) {
+            const container = document.getElementById('cursos-container');
+
+            const url =
+                `/api/dashboard/courses/${accountId}`;
+
+            fetch(url)
+                .then(response => {
+                    if(!response.ok) throw new Error("Error al obtener datos");
+                    return response.json();
+                })
+                .then(datosCursos => {
+                    container.innerHTML = '';
+
+                    if(datosCursos.length === 0) {
+                        container.innerHTML = '<p class="text-gray-500">No hay cursos asignados en este ciclo.</p>';
+                        return;
+                    }
+
+                    datosCursos.forEach(curso => {
+                        const tarjetaHTML = `
+                        <div class="bg-white rounded-md cursor-pointer group relative overflow-hidden flex flex-col h-[363px]" style="box-shadow: rgb(116, 142, 152) 0px 4px 16px -8px;">
+                            <a href="#" class="flex flex-col h-full w-full relative" style="border-bottom: 4px solid rgb(191, 80, 11);">
+                                <div class="relative w-full">
+                                    <img width="100%" height="156" src="https://class.utp.edu.pe/static/media/courseP1.6604957d.png" class="w-full h-[156px] object-cover">
+                                    <div class="w-full h-[4px] bg-[#BF500B]"></div>
+                                </div>
+                                <div class="px-5 pt-6 pb-4 flex-1 flex flex-col bg-white">
+                                    <div class="font-black text-[15px] lg:text-[16px] text-[#161D1F] leading-tight mb-1 group-hover:underline">
+                                        ${curso.nombreCurso} </div>
+                                    <div class="text-[12px] lg:text-[13px] text-gray-500">${curso.codigoSeccion} - Presencial</div>
+                                </div>
+                                <div class="px-5 pb-5 flex items-center bg-white mt-auto">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${curso.profesorNombre}&backgroundColor=e6e6fa" class="rounded-full mr-2 bg-gray-100" width="24" height="24">
+                                    <p class="text-[12px] text-gray-500 capitalize flex items-center">${curso.profesorNombre}</p>
+                                </div>
+                            </a>
+                        </div>`;
+
+                        container.insertAdjacentHTML('beforeend', tarjetaHTML);
+                    });
+                })
+                .catch(error => {
+                    container.innerHTML = `<p class="text-red-500 text-sm">Aún falta crear el endpoint en Spring Boot para esta ruta: ${url}</p>`;
+                });
+        }
+    </script>
+</body>
+</html>

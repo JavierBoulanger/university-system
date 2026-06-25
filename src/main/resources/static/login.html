@@ -116,11 +116,9 @@
         btnLogin.disabled = true;
         btnLogin.value = "Validando...";
 
-        // 3. Capturamos lo que el usuario escribió en las cajas de texto
         const usernameValue = document.getElementById('username').value;
         const passwordValue = document.getElementById('password').value;
 
-        // 4. Enviamos el JSON a tu endpoint de AuthController
         fetch('/api/auth/login', {
             method: 'POST',
             headers: {
@@ -136,25 +134,16 @@
                 if (!response.ok) {
                     throw new Error('Usuario o contraseña incorrectos');
                 }
-                return response.json(); // Si es 200 OK, leemos el JSON (accountId, rol, etc.)
+                return response.json();
             })
             .then(data => {
-                // 5. ¡Login Exitoso! Guardamos el perfil en la memoria del navegador (localStorage)
                 localStorage.setItem('userAccountId', data.accountId);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userRole', data.role);
 
-                // Mostramos un mensaje de prueba (luego lo cambiaremos por una redirección)
-                alert('¡Acceso concedido!\nUsuario: ' + data.username + '\nRol: ' + data.role);
-
-                // TODO: Aquí en el futuro haremos la redirección dinámica. Por ejemplo:
-                // if(data.role === 'STUDENT') window.location.href = '/portal-alumno.html';
-                // if(data.role === 'TEACHER') window.location.href = '/portal-docente.html';
-
-                btnLogin.value = "Ingreso exitoso";
+                window.location.href = '/dashboard.html';
             })
             .catch(error => {
-                // 6. Si hay error (credenciales malas), mostramos alerta y reactivamos el botón
                 alert(error.message);
                 btnLogin.disabled = false;
                 btnLogin.value = "Iniciar sesión";
