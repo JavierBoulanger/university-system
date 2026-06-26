@@ -165,7 +165,9 @@
                     datosCursos.forEach(curso => {
                         const tarjetaHTML = `
                         <div class="bg-white rounded-md cursor-pointer group relative overflow-hidden flex flex-col h-[363px]" style="box-shadow: rgb(116, 142, 152) 0px 4px 16px -8px;">
-                            <a href="#" class="flex flex-col h-full w-full relative" style="border-bottom: 4px solid rgb(191, 80, 11);">
+                            <a href="course-detail.html?id=${curso.courseId}"
+   class="flex flex-col h-full w-full relative"
+   style="border-bottom: 4px solid rgb(191, 80, 11);">
                                 <div class="relative w-full">
                                     <img width="100%" height="156" src="https://class.utp.edu.pe/static/media/courseP1.6604957d.png" class="w-full h-[156px] object-cover">
                                     <div class="w-full h-[4px] bg-[#BF500B]"></div>

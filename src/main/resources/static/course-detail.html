@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTP+class :: Detalle de Curso</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <style>
+        body { font-family: 'Lato', sans-serif; background-color: #ffffff; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .shadow-utp { box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="text-neutral-02 flex overflow-x-hidden min-h-screen">
+    
+    <aside class="w-[88px] bg-[#000F37] flex flex-col items-center py-5 fixed h-full z-20">
+        <div class="mb-6 text-white cursor-pointer hover:opacity-80 transition-opacity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </div>
+        
+        <nav class="flex flex-col w-full relative">
+            <a href="dashboard.html" class="flex flex-col items-center justify-center h-[80px] bg-[#e6ebf5] text-primary-dark relative">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#f94c61]"></div>
+                <svg width="24" height="24" viewBox="0 0 1024 1024" class="fill-current mb-1"><path d="M853.333 42.667h-576c-81.067 0-149.333 68.267-149.333 149.333v640c0 81.067 68.267 149.333 149.333 149.333h576c25.6 0 42.667-17.067 42.667-42.667v-853.333c0-25.6-17.067-42.667-42.667-42.667zM277.333 128h533.333v554.667h-533.333c-21.333 0-42.667 4.267-64 17.067v-507.733c0-34.133 29.867-64 64-64zM277.333 896c-34.133 0-64-29.867-64-64s29.867-64 64-64h533.333v128h-533.333z"></path></svg>
+                <span class="text-[12px] text-center font-bold">Cursos</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center h-[80px] text-[#a5b0c0] hover:text-white transition-colors">
+                <i class="fa-solid fa-message text-xl mb-1"></i>
+                <span class="text-[12px] text-center">Chat</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="ml-[88px] flex-1 flex flex-col">
+        
+        <header class="bg-white h-[64px] flex items-center justify-between px-6 shadow-sm relative z-10 w-full">
+            <div class="flex items-center">
+                <img src="https://sso.utp.edu.pe/auth/resources/4i3s1/login/utp-pao/images/logo-pao-class.png" class="h-[25px] ml-[24px] object-contain" alt="UTP">
+            </div>
+            <div class="flex items-center space-x-5">
+                <div class="flex items-center space-x-3 cursor-pointer pl-4 border-l border-gray-200">
+                    <div class="text-right leading-tight hidden md:block">
+                        <p id="user-name-display" class="text-[13px] font-bold text-gray-800">Cargando...</p>
+                        <p id="user-role-display" class="text-[11px] text-gray-500">Cargando...</p>
+                    </div>
+                    <div class="h-10 w-10 flex items-center justify-center">
+                        <img class="rounded-full" width="40" height="40" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=1db5b2">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="w-full bg-[#eff6ff]">
+            <div class="px-8 w-full pt-4">
+                <div class="flex items-center h-[48px] mb-1">
+                    <a href="dashboard.html" class="flex items-center justify-center h-[32px] px-[16px] py-[4px] text-[#0661fc] hover:bg-[#cbdfff] transition-colors rounded mr-1">
+                        <i class="fa-solid fa-arrow-left mr-2 text-[14px]"></i> 
+                        <span class="text-[12px] font-bold tracking-wide">Volver a cursos</span>
+                    </a>
+                    <div class="border-l border-[#4a4f55] h-[24px] ml-2 mr-3"></div>
+                    <span id="course-header-title" class="text-[#333333] text-[14px] font-bold tracking-wide">Cargando curso...</span>
+                    <span class="bg-[#bf500b] text-white text-[11px] px-3 py-[2px] rounded-lg font-bold ml-4">Presencial</span>
+                </div>
+
+                <div class="flex space-x-8 border-b border-[#b0c0ca] mt-2 text-[14px] font-bold text-[#4A4A4A]">
+                    <a href="#" class="pb-3 hover:text-[#0661fc] transition-colors">Sílabo</a>
+                    <a href="#" class="pb-3 text-[#0661fc] border-b-[3px] border-[#0661fc]">Contenido</a>
+                    <a href="#" class="pb-3 hover:text-[#0661fc] transition-colors">Evaluaciones</a>
+                    <a href="#" class="pb-3 hover:text-[#0661fc] transition-colors">Notas</a>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex-1 px-8 py-6 w-full">
+
+            <div class="bg-[#05112E] text-white p-4 rounded flex items-start justify-between mb-8 shadow-sm">
+                <div class="flex items-start">
+                    <i class="fa-solid fa-bullhorn mt-0.5 mr-3 text-[16px]"></i>
+                    <p class="text-[13px] leading-relaxed">Las clases presenciales serán transmitidas en vivo vía Zoom y quedarán grabadas en la plataforma. Este entorno sirve de simulación para el motor de Inteligencia Artificial.</p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-md mb-8">
+                <button class="w-full flex items-center justify-between p-4 px-6 bg-white rounded-md hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center text-[#333333] font-bold text-[16px]">
+                        <i class="fa-solid fa-book-open mr-3"></i> Información del curso
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </button>
+            </div>
+
+            <h2 id="total-semanas-display" class="text-[16px] font-bold text-[#0071bf] mb-4">Total de semanas (0)</h2>
+
+            <div id="modulos-container" class="w-full">
+                <p id="loading-modules" class="text-gray-500">Extrayendo sílabo de la base de datos...</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.getElementById('user-name-display').textContent = 'Hola, ' + (localStorage.getItem('username') || 'Invitado');
+            document.getElementById('user-role-display').textContent = localStorage.getItem('userRole') || 'STUDENT';
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const cursoId = urlParams.get('id');
+
+            if (!cursoId) {
+                document.getElementById('modulos-container').innerHTML = '<p class="text-red-500">Error: No se seleccionó ningún curso.</p>';
+                return;
+            }
+
+            cargarCurso(cursoId);
+        });
+
+        function cargarCurso(cursoId){
+
+            fetch(`/api/courses/${cursoId}/details`)
+                .then(response => {
+
+                    if(!response.ok){
+                        throw new Error("No se pudo cargar el curso");
+                    }
+
+                    return response.json();
+                })
+                .then(curso => {
+
+                    renderizarVista(curso);
+
+                })
+                .catch(error => {
+
+                    document.getElementById('modulos-container').innerHTML =
+                        '<p class="text-red-500">Error cargando el curso</p>';
+
+                    console.error(error);
+                });
+        }
+
+        function renderizarVista(curso) {
+
+            document.getElementById('course-header-title').innerHTML =
+                curso.name;
+
+            document.getElementById('total-semanas-display').textContent =
+                `Total de semanas (${curso.modules.length})`;
+
+            const container =
+                document.getElementById('modulos-container');
+
+            container.innerHTML = '';
+
+            curso.modules.forEach((modulo,index) => {
+
+                let temasHTML = '';
+
+                modulo.topics.forEach(topic => {
+
+                    temasHTML += `
+                <button class="w-full flex items-center justify-between p-4 px-12 border-t border-gray-100 hover:bg-gray-50 transition-colors">
+                    <span class="text-[14px] text-[#4A4A4A]">
+                        ${topic.name}
+                    </span>
+
+                    <i class="fa-solid fa-file-lines text-gray-400 text-[14px]"></i>
+                </button>
+            `;
+                });
+
+                modulo.evaluations.forEach(eval => {
+
+                    temasHTML += `
+                <button class="w-full flex items-center justify-between p-4 px-12 border-t border-gray-100 hover:bg-gray-50 transition-colors">
+                    <span class="text-[14px] text-red-600 font-bold">
+                        ${eval.title}
+                    </span>
+
+                    <i class="fa-solid fa-clipboard-check text-red-500"></i>
+                </button>
+            `;
+                });
+
+                const isOpen = index === 0;
+
+                const contentClass =
+                    isOpen ? 'block' : 'hidden';
+
+                const chevronClass =
+                    isOpen
+                        ? 'fa-chevron-up text-[#0071bf]'
+                        : 'fa-chevron-down text-gray-400';
+
+                const moduloHTML = `
+            <div class="bg-white border border-gray-200 rounded-md mb-4 shadow-sm">
+
+                <button
+                    class="w-full flex items-center justify-between p-5 px-6 bg-white hover:bg-gray-50 transition-colors accordion-btn">
+
+                    <span class="font-bold text-[16px] text-[#333333]">
+                        Semana ${modulo.moduleNumber}
+                    </span>
+
+                    <i class="fa-solid ${chevronClass} accordion-icon"></i>
+
+                </button>
+
+                <div class="accordion-content ${contentClass}">
+                    ${temasHTML}
+                </div>
+
+            </div>
+        `;
+
+                container.insertAdjacentHTML(
+                    'beforeend',
+                    moduloHTML
+                );
+            });
+
+            activarAcordeones();
+        }
+
+        function activarAcordeones() {
+            const botones = document.querySelectorAll('.accordion-btn');
+            
+            botones.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const icon = item.querySelector('.accordion-icon');
+                    
+                    // Lógica para alternar clases y abrir/cerrar
+                    if (content.classList.contains('hidden')) {
+                        // Abrir
+                        content.classList.remove('hidden');
+                        content.classList.add('block');
+                        
+                        this.classList.remove('rounded-md');
+                        this.classList.add('rounded-t-md');
+                        
+                        item.classList.add('border-l-[6px]', 'border-l-[#0071bf]');
+                        
+                        icon.classList.remove('fa-chevron-down', 'text-gray-400');
+                        icon.classList.add('fa-chevron-up', 'text-[#0071bf]');
+                    } else {
+                        // Cerrar
+                        content.classList.add('hidden');
+                        content.classList.remove('block');
+                        
+                        this.classList.add('rounded-md');
+                        this.classList.remove('rounded-t-md');
+                        
+                        item.classList.remove('border-l-[6px]', 'border-l-[#0071bf]');
+                        
+                        icon.classList.remove('fa-chevron-up', 'text-[#0071bf]');
+                        icon.classList.add('fa-chevron-down', 'text-gray-400');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
