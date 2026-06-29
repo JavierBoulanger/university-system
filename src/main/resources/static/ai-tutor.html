@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTP+class :: Material de Refuerzo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <style>
+        body { font-family: 'Lato', sans-serif; background-color: #f8fafc; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* Estilos para el contenido generado por la IA */
+        .markdown-body ul { list-style-type: disc; margin-left: 20px; margin-bottom: 12px; }
+        .markdown-body ol { list-style-type: decimal; margin-left: 20px; margin-bottom: 12px; }
+        .markdown-body li { margin-bottom: 6px; color: #4b5563; }
+        .markdown-body p { margin-bottom: 12px; color: #374151; line-height: 1.6; }
+        .markdown-body strong { color: #000F37; font-weight: 700; }
+        .markdown-body h3, .markdown-body h4 { color: #0661fc; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+    </style>
+</head>
+<body class="text-neutral-02 flex overflow-x-hidden min-h-screen">
+
+<aside class="w-[88px] bg-[#000F37] flex flex-col items-center py-5 fixed h-full z-20">
+    <div class="mb-6 text-white cursor-pointer hover:opacity-80 transition-opacity">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </div>
+
+    <nav class="flex flex-col w-full relative">
+        <a href="dashboard.html" class="flex flex-col items-center justify-center h-[80px] text-[#a5b0c0] hover:text-white transition-colors">
+            <svg width="24" height="24" viewBox="0 0 1024 1024" class="fill-current mb-1"><path d="M853.333 42.667h-576c-81.067 0-149.333 68.267-149.333 149.333v640c0 81.067 68.267 149.333 149.333 149.333h576c25.6 0 42.667-17.067 42.667-42.667v-853.333c0-25.6-17.067-42.667-42.667-42.667zM277.333 128h533.333v554.667h-533.333c-21.333 0-42.667 4.267-64 17.067v-507.733c0-34.133 29.867-64 64-64zM277.333 896c-34.133 0-64-29.867-64-64s29.867-64 64-64h533.333v128h-533.333z"></path></svg>
+            <span class="text-[12px] text-center">Cursos</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center justify-center h-[80px] text-[#a5b0c0] hover:text-white transition-colors">
+            <svg width="24" height="24" viewBox="0 0 1024 1024" class="fill-current mb-1"><path d="M128 938.667c-12.8 0-21.333-4.267-29.867-12.8-12.8-12.8-17.067-29.867-8.533-42.667l76.8-226.133c-25.6-51.2-38.4-110.933-38.4-166.4 0-153.6 85.333-294.4 226.133-362.667 55.467-29.867 119.467-42.667 179.2-42.667 0 0 0 0 0 0h21.333c209.067 12.8 371.2 174.933 384 379.733v25.6c0 64-12.8 123.733-42.667 183.467-68.267 136.533-209.067 221.867-362.667 221.867-55.467 0-115.2-12.8-166.4-34.133l-226.133 76.8c-4.267 0-8.533 0-12.8 0zM533.333 170.667c-51.2 0-98.133 12.8-140.8 34.133-110.933 55.467-179.2 162.133-179.2 285.867 0 51.2 12.8 98.133 34.133 140.8 4.267 8.533 4.267 21.333 4.267 34.133l-55.467 162.133 162.133-55.467c12.8-4.267 21.333-4.267 34.133 4.267 42.667 21.333 93.867 34.133 140.8 34.133 123.733 0 230.4-68.267 285.867-174.933 21.333-42.667 34.133-93.867 34.133-140.8 0 0 0 0 0 0v-25.6c-8.533-162.133-136.533-290.133-302.933-298.667h-17.067c0 0 0 0 0 0z"></path></svg>
+            <span class="text-[12px] text-center">Chat</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center justify-center h-[80px] bg-[#e6ebf5] text-primary-dark relative">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#f94c61]"></div>
+            <i class="fa-solid fa-robot text-2xl mb-1 text-[#0661fc]"></i>
+            <span class="text-[12px] text-center font-bold">Tutor IA</span>
+        </a>
+    </nav>
+</aside>
+
+<div class="ml-[88px] flex-1 flex flex-col h-screen overflow-hidden">
+
+    <header class="bg-white h-[64px] flex items-center justify-between px-6 shadow-sm relative z-10 w-full shrink-0">
+        <div class="flex items-center">
+            <img src="/static/media/new-logo.c86d23e3.svg" class="w-[151px] h-[25px] ml-[24px] object-contain" alt="UTP" onerror="this.src='https://sso.utp.edu.pe/auth/resources/4i3s1/login/utp-pao/images/logo-pao-class.png'">
+        </div>
+
+        <div class="flex items-center space-x-5">
+            <button class="relative text-[#4a4f55] hover:text-primary-dark transition-colors">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute -top-1.5 -right-2 bg-[#FABD00] text-[#000f37] text-[9px] font-bold px-1 rounded-full border border-white">3</span>
+            </button>
+            <div class="flex items-center space-x-3 cursor-pointer pl-4 border-l border-gray-200">
+                <div class="text-right leading-tight hidden md:block">
+                    <p id="user-name-display" class="text-[13px] font-bold text-gray-800">Cargando...</p>
+                    <p id="user-role-display" class="text-[11px] text-gray-500">Cargando...</p>
+                </div>
+                <div class="h-10 w-10 flex items-center justify-center">
+                    <img class="rounded-full" width="40" height="40" alt="Avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=1db5b2">
+                </div>
+                <i class="fa-solid fa-chevron-down text-[10px] text-gray-600"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        <div class="w-[340px] bg-white border-r border-gray-200 flex flex-col z-10 shadow-sm shrink-0">
+            <div class="h-[64px] bg-white flex items-center px-6 border-b border-gray-200 shrink-0">
+                <h1 class="font-black text-[#000F37] text-[18px]">Material de Refuerzo</h1>
+            </div>
+
+            <div class="p-4 bg-gray-50 border-b border-gray-200 shrink-0">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                    <input type="text" placeholder="Buscar por curso..." class="w-full bg-white border border-gray-300 text-sm rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:border-[#0661fc]">
+                </div>
+            </div>
+
+            <div class="overflow-y-auto flex-1" id="document-list">
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col bg-[#f0f2f5] overflow-y-auto relative">
+            <div class="max-w-4xl mx-auto w-full p-8" id="material-container">
+
+                <div class="flex flex-col items-center justify-center h-full text-gray-400 mt-32">
+                    <i class="fa-solid fa-book-open-reader text-6xl mb-4 text-gray-300"></i>
+                    <p class="text-lg">Selecciona un material de refuerzo a la izquierda</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Sincronizamos los datos del usuario en la barra superior
+        const username = localStorage.getItem('username') || 'Invitado';
+        const role = localStorage.getItem('userRole') || 'STUDENT';
+        const accountId = localStorage.getItem('userAccountId') || '15';
+
+        document.getElementById('user-name-display').textContent = 'Hola, ' + username;
+        document.getElementById('user-role-display').textContent = role;
+
+        if (role !== 'STUDENT') {
+            alert('Acceso denegado. Esta vista es exclusiva para estudiantes.');
+            window.location.href = 'dashboard.html';
+            return;
+        }
+
+        cargarHistorialIA(accountId);
+    });
+
+    let historialGlobal = [];
+
+    function cargarHistorialIA(accountId) {
+        const role = localStorage.getItem('userRole') || 'STUDENT';
+        const url = `/api/ai-recommendations/student/${accountId}`;
+        const lista = document.getElementById('document-list');
+
+
+        lista.innerHTML = '<div class="p-5 text-center text-gray-500 text-sm"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Cargando material de refuerzo...</div>';
+
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-User-Role': role,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.status === 403) {
+                    throw new Error("Acceso denegado. Rol no autorizado.");
+                }
+                if (!response.ok) {
+                    throw new Error("Error de conexión con el servidor.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                historialGlobal = data;
+
+                if (data.length === 0) {
+                    lista.innerHTML = '<div class="p-5 text-center text-gray-500 text-sm">No tienes material de refuerzo pendiente. ¡Buen trabajo!</div>';
+                    return;
+                }
+
+                dibujarListaDocumentos(data);
+
+
+                abrirMaterial(data[0].id);
+            })
+            .catch(error => {
+                console.error("Error obteniendo recomendaciones:", error);
+                lista.innerHTML = `<div class="p-5 text-center text-red-500 text-sm"><i class="fa-solid fa-triangle-exclamation mr-2"></i>${error.message}</div>`;
+            });
+    }
+
+    function dibujarListaDocumentos(materiales) {
+        const lista = document.getElementById('document-list');
+        lista.innerHTML = '';
+
+        materiales.forEach(mat => {
+            const fecha = new Date(mat.generatedAt).toLocaleDateString('es-PE', { day: '2-digit', month: 'short' });
+
+            const itemHTML = `
+                    <div onclick="abrirMaterial(${mat.id})" class="flex items-start px-5 py-4 hover:bg-blue-50 cursor-pointer border-b border-gray-100 transition-colors">
+                        <div class="w-10 h-10 bg-[#e6ebf5] rounded flex items-center justify-center mr-4 text-[#0661fc] shrink-0 mt-1">
+                            <i class="fa-solid fa-file-lines text-lg"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[14px] text-[#000F37] leading-tight mb-1 pr-2">${mat.courseName}</h3>
+                            <p class="text-[12px] text-gray-500 mb-1">Refuerzo: ${mat.evaluationTitle}</p>
+                            <span class="text-[11px] font-bold text-gray-400"><i class="fa-regular fa-calendar mr-1"></i> ${fecha}</span>
+                        </div>
+                    </div>
+                `;
+            lista.insertAdjacentHTML('beforeend', itemHTML);
+        });
+    }
+
+    function abrirMaterial(materialId) {
+        const material = historialGlobal.find(m => m.id === materialId);
+        if(!material) return;
+
+        const contenedor = document.getElementById('material-container');
+        const fechaHora = new Date(material.generatedAt).toLocaleString('es-PE');
+
+        let textoFormateado = material.recommendationContent
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/\n/g, '<br>')
+            .replace(/### (.*)/g, '<h3>$1</h3>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*([^*]+)\*/g, '<i>$1</i>')
+            .replace(/`([^`]+)`/g, '<code class="bg-gray-100 text-red-500 px-1 rounded">$1</code>');
+
+        if(!textoFormateado.startsWith('<')) {
+            textoFormateado = `<p>${textoFormateado}</p>`;
+        }
+
+        contenedor.innerHTML = `
+                <div class="mb-6 flex justify-between items-start">
+                    <div>
+                        <div class="inline-flex items-center space-x-1 bg-blue-100 text-[#0661fc] text-[11px] font-bold px-2 py-1 rounded mb-3">
+                            <i class="fa-solid fa-sparkles text-[10px]"></i>
+                            <span>Generado por IA Generativa</span>
+                        </div>
+                        <h1 class="text-2xl font-black text-[#000F37] mb-2">Guía de Estudio: ${material.courseName}</h1>
+                        <p class="text-sm text-gray-500"><i class="fa-regular fa-file-alt mr-1"></i> Referencia: ${material.evaluationTitle}</p>
+                    </div>
+                    <div class="text-right">
+                        <button class="bg-white border border-gray-300 text-gray-600 hover:bg-gray-50 px-4 py-2 rounded text-sm font-bold shadow-sm transition-colors">
+                            <i class="fa-solid fa-print mr-2"></i> Imprimir
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-[#FFF4E5] border-l-4 border-[#F59E0B] p-4 rounded-r mb-8">
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-circle-info text-[#F59E0B] mt-0.5 mr-3"></i>
+                        <div>
+                            <p class="text-sm text-[#664D03]">
+                                Esta guía ha sido creada automáticamente porque tu calificación en la evaluación fue de <b>${material.gradeObtained}</b>. El objetivo es reforzar los temas donde hubo mayor dificultad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+                    <div class="markdown-body">
+                        ${textoFormateado}
+                    </div>
+
+                    <div class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between">
+                        <p class="text-[11px] text-gray-400">ID de Generación: #${material.id}</p>
+                        <p class="text-[11px] text-gray-400">Fecha de emisión: ${fechaHora}</p>
+                    </div>
+                </div>
+            `;
+    }
+</script>
+</body>
+</html>

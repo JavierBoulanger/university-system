@@ -45,5 +45,8 @@ public class AIRecommendation {
     private RecommendationStatus status;
 
     @Column(nullable = false)
+    private Boolean readByStudent = false;
+
+    @Column(nullable = false)
     private LocalDateTime generatedAt;
 }

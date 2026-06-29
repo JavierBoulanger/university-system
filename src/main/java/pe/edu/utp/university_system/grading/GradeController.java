@@ -21,7 +21,7 @@ public class GradeController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body("Grades registered successfully");
+                .body("Se registro con exito la nota");
     }
 
     @GetMapping("/average/{enrollmentId}")

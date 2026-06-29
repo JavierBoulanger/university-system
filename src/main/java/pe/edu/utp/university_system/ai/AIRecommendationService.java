@@ -14,88 +14,76 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class AIRecommendationService {
 
     private final AIRecommendationRepository repository;
 
-    @Value("${gemini.model}")
-    private String modelName;
+    private final AISettingsRepository settingsRepository;
 
     public void generateRecommendation(
             Enrollment enrollment,
             Evaluation evaluation,
             Double gradeValue) {
 
+        AISettings settings =
+                settingsRepository.findById(1L)
+                        .orElseThrow();
+
+        if (!settings.getEnabled()) {
+            return;
+        }
+
+        if (gradeValue >=
+                settings.getMinimumGradeThreshold()) {
+            return;
+        }
+
         if (evaluation.getEvaluationType()
                 == EvaluationType.FINAL_EXAM) {
-
             return;
         }
 
         List<String> topics =
-                getTopicsForReinforcement(evaluation);
-
-        String prompt =
-                buildPrompt(
-                        enrollment,
-                        evaluation,
-                        topics,
-                        gradeValue
+                getTopicsForReinforcement(
+                        evaluation
                 );
 
-        String aiResponse =
-                """
-                        PRueba
-                        """;
+        String prompt =
+                settings.getSystemPrompt()
+                        .replace("{course}",
+                                evaluation
+                                        .getModule()
+                                        .getCourse()
+                                        .getName())
+                        .replace("{grade}",
+                                String.valueOf(
+                                        gradeValue))
+                        .replace("{evaluation}",
+                                evaluation
+                                        .getTitle())
+                        .replace("{topics}",
+                                String.join(
+                                        ", ",
+                                        topics));
+
+        String aiResponse = "";
 
         AIRecommendation recommendation = new AIRecommendation();
-
         recommendation.setEnrollment(enrollment);
         recommendation.setGradeObtained(gradeValue);
         recommendation.setEvaluationTitle(evaluation.getTitle());
-        recommendation.setModelName(modelName);
+        recommendation.setModelName(settings.getModelName());
         recommendation.setPrompt(prompt);
         recommendation.setRecommendationContent(aiResponse);
         recommendation.setStatus(RecommendationStatus.GENERATED);
+        recommendation.setReadByStudent(false);
         recommendation.setGeneratedAt(LocalDateTime.now());
+
         repository.save(recommendation);
     }
 
-    private String buildPrompt(
-            Enrollment enrollment,
-            Evaluation evaluation,
-            List<String> topics,
-            Double gradeValue) {
-
-        String topicsText =
-                String.join(", ", topics);
-
-        return """
-                Eres un profesor universitario experimentado.
-                
-                El estudiante obtuvo %.2f en %s.
-                
-                Explica los siguientes temas:
-                
-                %s
-                
-                Luego proporciona:
-                
-                1. Una explicación concisa.
-                2. Ejemplos prácticos.
-                3. Dos ejercicios.
-                4. Recomendaciones de estudio.
-                
-                Mantén un tono motivador.
-                """
-                .formatted(
-                        gradeValue,
-                        evaluation.getTitle(),
-                        topicsText
-                );
-    }
 
     private List<String> getTopicsForReinforcement(Evaluation evaluation) {
         List<String> topics = new ArrayList<>();
