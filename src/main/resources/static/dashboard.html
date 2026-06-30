@@ -269,12 +269,12 @@
                     // Mostramos solo las últimas 3 (para no saturar la barra)
                     noLeidas.slice(0, 3).forEach(rec => {
                         const html = `
-            <a class="block mx-5 mb-3 py-[10px] px-3 bg-[#F2F9FF] border-b border-gray-200 hover:bg-[#e6f4ff] cursor-pointer rounded-sm" href="tutor-ia.html">
-                <span class="flex items-start justify-between mb-1">
-                    <p class="text-[14px] text-[#0661fc] font-bold hover:underline">Revisar tutoría: ${rec.evaluationTitle}</p>
-                </span>
-                <p class="text-[12px] text-[#4A4A4A] mt-1.5 uppercase font-semibold text-truncate">${rec.courseName}</p>
-            </a>`;
+                            <a class="block mx-5 mb-3 py-[10px] px-3 bg-[#F2F9FF] border-b border-gray-200 hover:bg-[#e6f4ff] cursor-pointer rounded-sm" href="ai-tutor.html?id=${rec.id}">
+                                <span class="flex items-start justify-between mb-1">
+                                    <p class="text-[14px] text-[#0661fc] font-bold hover:underline">Revisar tutoría: ${rec.evaluationTitle}</p>
+                                </span>
+                                <p class="text-[12px] text-[#4A4A4A] mt-1.5 uppercase font-semibold text-truncate">${rec.courseName}</p>
+                            </a>`;
                         container.insertAdjacentHTML('beforeend', html);
                     });
                 })
